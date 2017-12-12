@@ -18,11 +18,20 @@ public class Display extends JComponent{
 	public Data[] getArray() {
 		return array;
 	}
-	public void swap(int i, int j) {
+	public void swap(int i, int j, long time) {
 		int temp = array[i].getValue();
 		array[i].setValue(array[j].getValue());
 		array[j].setValue(temp);
+		Sort.beep(array[i].getValue()*50, 50, .5);
 		repaint();
+		/*try {
+			Thread.sleep(time);
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}*/
+	}
+	public void swap(int i, int j) {
+		this.swap(i, j,1000);
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);

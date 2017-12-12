@@ -19,6 +19,9 @@ public class Window extends JFrame{
 	public void swap(int i, int j) {
 		display.swap(i, j);
 	}
+	public void swap(int i, int j, long time) {
+		display.swap(i, j,time);
+	}
 	public static void main(String[] args) {
 		int n = 500;
 		Data[] array = new Data[n];
@@ -27,13 +30,6 @@ public class Window extends JFrame{
 			array[i] = new Data(i,r.nextInt(90)+10,Color.BLUE);
 		}
 		Window window = new Window(new Display(array,Color.WHITE),1516,421);
-		try {
-			Thread.sleep(1000);
-		} catch (InterruptedException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		window.swap(0, 1);
 	}
 
 }
