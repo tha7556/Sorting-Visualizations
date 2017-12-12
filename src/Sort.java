@@ -30,6 +30,12 @@ public abstract class Sort {
 	public Data[] getArray() {
 		return array;
 	}
+	public void swap(int i, int j) {
+		window.swap(i, j);
+	}
+	public void swap(int i, int j, long time) {
+		window.swap(i, j, time);
+	}
 	public static Data[] initializeData(int n) {
 		Data[] array = new Data[n];
 		Random r = new Random();

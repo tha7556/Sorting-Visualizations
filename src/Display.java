@@ -22,13 +22,12 @@ public class Display extends JComponent{
 		int temp = array[i].getValue();
 		array[i].setValue(array[j].getValue());
 		array[j].setValue(temp);
-		Sort.beep(array[i].getValue()*50, 50, .5);
 		repaint();
-		/*try {
+		try {
 			Thread.sleep(time);
 		} catch (InterruptedException e) {
 			e.printStackTrace();
-		}*/
+		}
 	}
 	public void swap(int i, int j) {
 		this.swap(i, j,1000);

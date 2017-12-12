@@ -15,7 +15,7 @@ public class SelectionSort extends Sort{
 					comparisons++;
 				}
 			}
-			window.swap(current, currentMin,50);
+			swap(current, currentMin,50);
 		}
 		return array;
 	}
