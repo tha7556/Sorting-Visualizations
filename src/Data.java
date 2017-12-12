@@ -2,23 +2,22 @@ import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Rectangle;
-import java.awt.Shape;
-import java.awt.Stroke;
 
-public class Data extends Rectangle {
-	private static final long serialVersionUID = 1L;
-	private int value;
+
+public class Data {
+	private int value,x;
 	private Color color;
-	public Data(int x, int y, int width, int value,Color color) {
-		super(x,y,width,value);
+	public Data(int x, int value,Color color) {
+		
 		this.value = value;
 		this.color = color;
-	}
-	public Data(int x, int y, int width, int value) {
-		this(x,y,width,value,Color.BLUE);
+		this.x = x;
 	}
 	public int getValue() {
 		return value;
+	}
+	public void setValue(int newValue) {
+		this.value = newValue;
 	}
 	public Color getColor() {
 		return color;
@@ -26,17 +25,20 @@ public class Data extends Rectangle {
 	public void changeColor(Color color) {
 		this.color = color;
 	}
-	public void draw(Graphics g,int x0,int y0, int xScale, int yScale,int width) {
+	public void draw(Graphics g,int windowHeight, int width) {
 		Graphics2D g2 = (Graphics2D)g;
-		
-		int rectX = x0 + (int)(xScale * x);
-        int rectY = y0 - (int)(yScale * y)-height;
-		Rectangle rect = new Rectangle(rectX,rectY,width,height);
+		int x0 = 0;
+		int y0 = windowHeight;
+		int rectX = x0 + (x*width);
+        
+        double height = windowHeight * (value/100.0);
+        int rectY = (int) (y0 - height);
+		Rectangle rect = new Rectangle(rectX,rectY,width,(int)height);
 		
 		g2.setColor(color);
 		g2.fill(rect);
 		
-		g2.setColor(Color.black);
+		//g2.setColor(Color.black);
 		g2.draw(rect);
 		
 	}

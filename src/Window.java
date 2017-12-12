@@ -16,14 +16,24 @@ public class Window extends JFrame{
 	public Display getDisplay() {
 		return display;
 	}
+	public void swap(int i, int j) {
+		display.swap(i, j);
+	}
 	public static void main(String[] args) {
-		Data[] array = new Data[10];
-		int width = 50;
+		int n = 500;
+		Data[] array = new Data[n];
 		Random r = new Random();
-		for(int i = 0; i < 10; i++) {
-			array[i] = new Data(i*width+1,0,width,r.nextInt(500));
+		for(int i = 0; i < n; i++) {
+			array[i] = new Data(i,r.nextInt(90)+10,Color.BLUE);
 		}
-		Window window = new Window(new Display(array,Color.black),400,400);
+		Window window = new Window(new Display(array,Color.WHITE),1516,421);
+		try {
+			Thread.sleep(1000);
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		window.swap(0, 1);
 	}
 
 }

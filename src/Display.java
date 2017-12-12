@@ -1,5 +1,7 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.util.Arrays;
 
 import javax.swing.JComponent;
@@ -8,29 +10,30 @@ public class Display extends JComponent{
 	private static final long serialVersionUID = 1L;
 	private Data[] array;
 	private Color background;
-	private final int PAD = 10;
-	private int x0,y0, maxX, maxY;
+	
 	public Display(Data[] array, Color background) {
 		this.array = Arrays.copyOf(array, array.length);
-		maxX = 0;
-		for(Data d : this.array) {
-			if(d.getHeight() > maxY)
-				maxY = (int) d.getHeight();
-			maxX += d.getWidth();
-		}
+		this.background = background;
 	}
 	public Data[] getArray() {
 		return array;
 	}
+	public void swap(int i, int j) {
+		int temp = array[i].getValue();
+		array[i].setValue(array[j].getValue());
+		array[j].setValue(temp);
+		repaint();
+	}
 	public void paintComponent(Graphics g) {
-		x0 = PAD;
-		y0 = getHeight() - PAD;
-		int xScale = (getWidth() - 2*PAD)/maxX;
-		int yScale = (getHeight() - 2*PAD)/maxY;
+		super.paintComponent(g);
 		g.setColor(background);
 		g.fillRect(getY(), getX(), getWidth(), getHeight());
+		Graphics2D g2 = (Graphics2D)g;
+        g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING,
+                            RenderingHints.VALUE_ANTIALIAS_ON);
+        
 		for(Data d : array) {
-			d.draw(g,x0,y0,xScale,yScale,getWidth()/array.length);
+			d.draw(g,getHeight(),getWidth()/array.length);
 		}
 	}
 
