@@ -10,6 +10,7 @@ public abstract class Sort {
 	protected Data[] array;
 	protected Window window;
 	protected int comparisons, swaps;
+	protected final int WAIT_TIME = 1;
 	
 	public Sort(Data[] array,Window window) {
 		this.array = Arrays.copyOf(array,array.length);
@@ -17,7 +18,7 @@ public abstract class Sort {
 		comparisons = 0;
 		swaps = 0;
 	}
-	public abstract Data[] sort();
+	public abstract void sort();
 	public int getComparisons() {
 		return comparisons;
 	}
@@ -32,9 +33,11 @@ public abstract class Sort {
 	}
 	public void swap(int i, int j) {
 		window.swap(i, j);
+		swaps++;
 	}
 	public void swap(int i, int j, long time) {
 		window.swap(i, j, time);
+		swaps++;
 	}
 	public static Data[] initializeData(int n) {
 		Data[] array = new Data[n];

@@ -11,6 +11,7 @@ public class Window extends JFrame{
 		add(display);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setSize(width,height);
+		setResizable(false);
 		setVisible(true);
 	}
 	public Display getDisplay() {

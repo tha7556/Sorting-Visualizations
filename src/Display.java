@@ -23,14 +23,16 @@ public class Display extends JComponent{
 		array[i].setValue(array[j].getValue());
 		array[j].setValue(temp);
 		repaint();
-		try {
-			Thread.sleep(time);
-		} catch (InterruptedException e) {
-			e.printStackTrace();
+		if(time > 0) {
+			try {
+				Thread.sleep(time);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
 		}
 	}
 	public void swap(int i, int j) {
-		this.swap(i, j,1000);
+		this.swap(i, j,10);
 	}
 	public void paintComponent(Graphics g) {
 		super.paintComponent(g);
